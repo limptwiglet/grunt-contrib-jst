@@ -88,8 +88,8 @@ module.exports = function(grunt) {
           output.push("});");
         }
         // If a path is passed to lodash we need to include it ala browserify
-        if (options.lodashPath) {
-          output.unshift("var _ = require('" + options.lodashPath + "');");
+        if (options.browserify && options.underscorePath) {
+          output.unshift("var _ = require('" + options.underscorePath + "');");
         }
         grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)));
         grunt.log.writeln('File "' + f.dest + '" created.');
